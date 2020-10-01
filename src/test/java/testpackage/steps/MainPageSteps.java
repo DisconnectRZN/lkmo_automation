@@ -39,7 +39,7 @@ public class MainPageSteps {
         }
     }
 
-    @Given("Открыть главную страницу сайта$")
+/*    @Given("Открыть главную страницу сайта$")
     public void openPage() {
 
         int count = 0;
@@ -82,14 +82,14 @@ public class MainPageSteps {
                 }
                 //throw new Error("network server is slow..check internet connection");
             }
-        }
+        }*/
 
         //page.Check_Subscribe_Applet();
         //page.AcceptCookie();
 
-    }
+ //   }
 
-    @Given("Открыть главную страницу сайта с выбором города$")
+/*    @Given("Открыть главную страницу сайта с выбором города$")
     public void openPageWithCity() {
 
         int count = 0;
@@ -128,7 +128,7 @@ public class MainPageSteps {
                 }
             }
         }
-    }
+    }*/
 
     @When("^Проверка отображения блока Header меню: Пациентам, Врачам, Франчайзинг, Корпоративным клиентам, Журналистам$")
     public void checkHeaderMenu() {
@@ -417,6 +417,7 @@ public class MainPageSteps {
         page.checkComplexResBtnMP();
     }
 
+/*
     @Given("Открыть страницу сайта (.*)$")
     public void openPageByUrl(String url) {
         int count = 0;
@@ -461,6 +462,7 @@ public class MainPageSteps {
         }
     }
 
+*/
     @Then("^Проверяю работу редиректа$")
     public void checkRedirect() {
         String urlBeforeRedirect = page.getDriver().getCurrentUrl();

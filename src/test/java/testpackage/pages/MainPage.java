@@ -1,5 +1,6 @@
 package testpackage.pages;
 
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriverException;
@@ -512,7 +513,7 @@ public class MainPage extends WebPage {
             Check_Visible_Element(Sub_Email_Field);
             Check_Visible_Element(Sub_Sub_Btn);
             Check_Visible_Element(Sub_Cls_Btn);
-            Enter_Text(Sub_Email_Field, "sapfierus@mail.ru");
+            Enter_Text( Sub_Email_Field, "sapfierus@mail.ru");
             Click_Method(Sub_Sub_Btn);
             //help.Click_Method(Sub_Cls_Btn);
         } else {
