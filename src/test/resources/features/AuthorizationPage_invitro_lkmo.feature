@@ -1,7 +1,6 @@
 # new feature
 # Tags: optional
 
-
 Feature: Проверка страницы авторизации в ЛКМО
 
   @AuthorizationPage
