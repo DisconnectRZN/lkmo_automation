@@ -4,10 +4,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
-
 import java.util.List;
-
-//@DefaultUrl("https://new-lkmo.invitro.ru/")
 
 public class AuthorizationPage extends WebPage {
 
@@ -31,18 +28,13 @@ public class AuthorizationPage extends WebPage {
     @FindBy(xpath = "//button[@class='btn btn-default']") // Кнопка отмены
     WebElementFacade CancelButton;
 
+    @FindBy(xpath = "//div[@class='alert alert-danger']") // Алерт - Ошибка: Неверный логин или пароль
+    WebElementFacade DangerAlert;
+
     @FindBys({@FindBy(xpath = "//div[@class='panel-body']")})
     List<WebElementFacade> ssfsfsdf;
 
     //////////////////////////////////////////////Исполняемый код\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-/*    public MainPage Search(String search) {
-        find(SearchInput).sendKeys(search);
-        find(SearchButton).waitUntilClickable().click();
-        waitABit(5000);
-
-        return this;
-    }*/
 
     public void maximize() {  // Изменение размера окна под размер экрана
         getDriver().manage().window().maximize();
@@ -72,6 +64,21 @@ public class AuthorizationPage extends WebPage {
         Assertions.assertThat(element(PasswordField).getValue())
                 .as("В поле 'Пароль' введено другое значение")
                 .isEqualTo("Nouser1");
+    }
+
+    public void enterIncorrectLoginPassword() { // Алерт - Ошибка: Неверный логин или пароль
+        Enter_Text(UserNameField, "Admin");
+        Enter_Text(PasswordField, "Nouser2");
+        Click_Method(EnterButton);
+        Assertions.assertThat(isElementEnabled(DangerAlert))
+                .as("Алерт - Ошибка: Неверный логин или пароль")
+                .isTrue();
+    }
+
+    public void enterLoginPasswordField() { // Проверка ввода пароля в поле 'Пароль'
+        Enter_Text(UserNameField, "testarm");
+        Enter_Text(PasswordField, "Nouser1");
+        Click_Method(EnterButton);
     }
 
     public void checkCheckBoxRememberLogin() { // Проверка на доступность чекбокса 'Запомнить меня'
