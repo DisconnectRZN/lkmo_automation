@@ -9,9 +9,7 @@ public class AuthorizationPageSteps {
     AuthorizationPage page;
 
     @Given("Открыть главную страницу сайта$")
-    public void openPage() {
-        page.open();
-    }
+    public void openPage() { page.open(); }
 
     @When("^Проверить отображение блока авторизации в ЛКМО$")
     public void checkAuthorizationBlock() { page.checkAuthorizationBlock(); }
@@ -36,8 +34,14 @@ public class AuthorizationPageSteps {
         page.checkCancelButton();
     }
 
-    @When("^Проверка нажатия на кнопку входа в ЛКМО$")
-    public void clickEnterButton() {
-        page.clickEnterButton();
+    @When("^Проверка ввода Логина и Пароля и входа в ЛКМО$")
+    public void enterLoginPasswordField() { page.enterLoginPasswordField(); }
+
+    @When("^Проверка некорректного ввода Логина и Пароля$")
+    public void enterIncorrectLoginPassword() {
+        page.enterIncorrectLoginPassword();
     }
+
+    @When("^Проверка нажатия на кнопку входа в ЛКМО$")
+    public void clickEnterButton() { page.clickEnterButton(); }
 }
