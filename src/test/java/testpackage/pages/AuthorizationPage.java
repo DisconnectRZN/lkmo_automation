@@ -50,10 +50,10 @@ public class AuthorizationPage extends WebPage {
         Assertions.assertThat(isElementDisplayed(UserNameField))
                 .as("Поле 'Логин' не отображается")
                 .isTrue();
-        Enter_Text(UserNameField, "testarm");
+        Enter_Text(UserNameField, "lkmotestdataadmin1");
         Assertions.assertThat(element(UserNameField).getValue())
                 .as("В поле 'Логин' введено другое значение")
-                .isEqualTo("testarm");
+                .isEqualTo("lkmotestdataadmin1");
     }
 
     public void enterPasswordField() { // Проверка ввода пароля в поле 'Пароль'
@@ -76,7 +76,7 @@ public class AuthorizationPage extends WebPage {
     }
 
     public void enterLoginPasswordField() { // Проверка ввода пароля в поле 'Пароль'
-        Enter_Text(UserNameField, "testarm");
+        Enter_Text(UserNameField, "lkmotestdataadmin1");
         Enter_Text(PasswordField, "Nouser1");
         Click_Method(EnterButton);
     }

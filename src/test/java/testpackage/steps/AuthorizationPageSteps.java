@@ -11,6 +11,11 @@ public class AuthorizationPageSteps {
     @Given("Открыть главную страницу сайта$")
     public void openPage() { page.open(); }
 
+    @Given("Открыть главную страницу сайта RMS$")
+    public void openRmsPage() {
+        page.setDefaultBaseUrl("http://testarm@invitro.ru:Nouser1@10.10.10.222:50505");
+        page.open(); }
+
     @When("^Проверить отображение блока авторизации в ЛКМО$")
     public void checkAuthorizationBlock() { page.checkAuthorizationBlock(); }
 
