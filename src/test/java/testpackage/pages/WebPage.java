@@ -246,8 +246,36 @@ public class WebPage extends PageObject {
     }
 
     public void scrollTo(WebElementFacade element) { // Скролл к нужному элементу
-        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+//        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        scrollToElement(element,0,-50);
         getSlow2();
+    }
+
+    public void scrollToElement(WebElementFacade element, int x, int y) {
+        if (!elementInViewPort(element)) {
+            String code = "window.scroll(" + (element.getLocation().x + x) + ","
+                    + (element.getLocation().y + y) + ");";
+            ((JavascriptExecutor) getDriver()).executeScript(code, element, x, y);
+        }
+    }
+
+    private boolean elementInViewPort(WebElementFacade element) {
+        Dimension screenSize = getDriver().manage().window().getSize();
+        try {
+            Long y = (Long) ((JavascriptExecutor) getDriver()).executeScript(
+                    "var elem = arguments[0],                 " +
+                            "  box = elem.getBoundingClientRect();    " +
+                            "return box.top;                            "
+                    , element);
+            return y < screenSize.getHeight() - 200 && y > 200;
+        } catch (ClassCastException e) {
+            Double y = (Double) ((JavascriptExecutor) getDriver()).executeScript(
+                    "var elem = arguments[0],                 " +
+                            "  box = elem.getBoundingClientRect();    " +
+                            "return box.top;                            "
+                    , element);
+            return y < screenSize.getHeight() - 200 && y > 200;
+        }
     }
 
     public void randomClick(By test) { // Метод кликающий на случайный элемент из списка
@@ -742,4 +770,5 @@ public class WebPage extends PageObject {
                 .as(description)
                 .isNotBlank();
     }
+
 }
