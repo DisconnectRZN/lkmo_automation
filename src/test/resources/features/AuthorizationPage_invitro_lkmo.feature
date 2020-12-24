@@ -1,6 +1,13 @@
 # new feature
 # Tags: optional
 
+# Логины и пароли которые используются при проверке разных автотестов (РМС + ЛКМО)
+#lkmotestdataadmin1 // Nouser1
+#lkmotestmanager1 // Nouser1
+#lkmotestassistant1 // Nouser1
+#lkmotestcurator1 // Nouser1
+#lkmo.test1 // Nouser1
+
 Feature: Проверка страницы авторизации в ЛКМО
 
   @AuthorizationPage
