@@ -90,7 +90,7 @@ public class MainPage extends WebPage {
     @FindBy(xpath = "//div[@class='dropdown bootstrap-select form-control']//*[@id='CityId']//*[contains(text(),'Харьков')]") // Поле Город - Харьков
     WebElementFacade KharkivCity;
 
-    @FindBy(xpath = "//tr[@class='table-row-first']") // Первая строка таблицы
+    @FindBy(xpath = "//tr[@class='table-row-first']//td[@class='office-name-cell']") // Первая строка таблицы
     WebElementFacade FirstFieldAfterSearch;
 
     @FindBy(xpath = "//input[@id='smartSearchClear']") // Кнопка сбросить фильтр поиска
