@@ -30,7 +30,7 @@ public class MOdetailedPage extends WebPage {
     @FindBy(xpath = "//div[@id='SpecificOfficeWrapper']//div[@class='pt-sm']//*[contains(text(),'Расписание на месяц')]") // Ссылка расписание МО на месяц
     WebElementFacade MOTableMonth;
 
-    @FindBy(xpath = "//div[@id='ServicesWrapper']//*[@class='pt-sm']") // Ссылка расписание услуги на месяц
+    @FindBy(xpath = "//div[@id='ServicesWrapper']//*[@class='pt-sm']//*[contains(text(),'Расписание на месяц')]") // Ссылка расписание услуги на месяц
     WebElementFacade ServiceTableMonth;
 
     @FindBy(xpath = "//div[@class='breadcrumb-item']") // Ссылка к детальной информации МО
@@ -59,6 +59,9 @@ public class MOdetailedPage extends WebPage {
 
     @FindBy(xpath = "//div[@class='datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-bottom']") // ПопАп календаря расписания
     WebElementFacade PopApCalendar;
+
+    @FindBy(xpath = "//button[@class='fc-calendarLink-button fc-button fc-state-default fc-corner-left fc-corner-right']") // Кнопка перехода к расписанию МО из Услуг
+    WebElementFacade OpenMoButton;
 
     //////////////////////////////////////////////Исполняемый код\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -150,6 +153,62 @@ public class MOdetailedPage extends WebPage {
     }
 
     public void checkBackButton() { // Проверка доступности кнопки возврата к предпросмотру МО
+        Assertions.assertThat(isElementEnabled(BackButton))
+                .as("Кнопка возврата к форме предпросмотра МО, отображается. Возврат проходит корректно")
+                .isTrue();
+        Click_Method(BackButton);
+    }
+
+
+    public void checkHeadingUsl() { // Проверка доступности заголовка открытого расписания МО
+        Assertions.assertThat(isElementEnabled(Heading))
+                .as("Заголовок открытого расписания МО, отображается")
+                .isTrue();
+    }
+    public void checkMonthChangeBlockUsl() { // Проверка доступности блока выбора месяца в расписании МО
+        Assertions.assertThat(isElementEnabled(MonthChangeBlock))
+                .as("Блок выбора месяца в расписании услуги в выбранном МО, отображается")
+                .isTrue();
+    }
+    public void checkMonthChangeLeftButtonUsl() { // Проверка доступности кнопки выбора предыдущего месяца, у выбранного МО
+        Assertions.assertThat(isElementEnabled(MonthChangeLeftButton))
+                .as("Кнопка выбора расписания за предыдущий месяц, отображается. Отрабатывает корректно")
+                .isTrue();
+        Click_Method(MonthChangeLeftButton);
+    }
+    public void checkMonthEnterAfterChangeUsl() { // Проверка отображения выбранного месяца, выбранного МО
+        Assertions.assertThat(isElementEnabled(MonthEnterAfterChange))
+                .as("Выбранный месяц МО у найденного МО, отображается")
+                .isTrue();
+    }
+
+    public void checkMonthChangeRightButtonUsl() { // Проверка доступности кнопки выбоара следующего месяца, у выбранного МО
+        Assertions.assertThat(isElementEnabled(MonthChangeRightButton))
+                .as("Кнопка выбора расписания за следующий месяц, отображается. Отрабатывает корректно")
+                .isTrue();
+        Click_Method(MonthChangeRightButton);
+    }
+
+    public void checkScheduleCalendarUsl() { // Проверка доступности календаря ранее выбранного МО
+        Assertions.assertThat(isElementEnabled(ScheduleCalendar))
+                .as("Месечный календарь у найденного МО, отображается")
+                .isTrue();
+    }
+
+    public void checkCalendarButtonUsl() { // Проверка доступности кнопки открытия поп-апа календаря, у выбранного МО
+        Assertions.assertThat(isElementEnabled(CalendarButton))
+                .as("Кнопка открытия поп-апа календаря, отображается. Отрабатывает поп-ап корректно")
+                .isTrue();
+        Click_Method(CalendarButton);
+    }
+
+    public void checkPopApCalendarUsl() { // Проверка доступности календаря поп-апа, у выбранного МО
+        Assertions.assertThat(isElementEnabled(PopApCalendar))
+                .as("Кальендарь поп-апа на месяц у найденного МО, отображается")
+                .isTrue();
+    }
+
+    public void checkBackButtonUsl() { // Проверка доступности кнопки возврата к предпросмотру МО
         Assertions.assertThat(isElementEnabled(BackButton))
                 .as("Кнопка возврата к форме предпросмотра МО, отображается. Возврат проходит корректно")
                 .isTrue();
