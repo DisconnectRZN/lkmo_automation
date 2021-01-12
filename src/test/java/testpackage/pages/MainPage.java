@@ -138,10 +138,10 @@ public class MainPage extends WebPage {
         Assertions.assertThat(isElementDisplayed(SearchField))
                 .as("Поле 'Поиска' не отображается")
                 .isTrue();
-        Enter_Text(SearchField, "Тестовый офис 2");
+        Enter_Text(SearchField, "Автотестовый МО (ЛКМО_Админ)");
         Assertions.assertThat(element(SearchField).getValue())
                 .as("В поле 'Поиска' введено другое значение")
-                .isEqualTo("Тестовый офис 2");
+                .isEqualTo("Автотестовый МО (ЛКМО_Админ)");
         Actions actions = new Actions(getDriver());
         actions.sendKeys(SearchField, Keys.ENTER).perform();
         Assertions.assertThat(isElementDisplayed(FirstFieldAfterSearch))

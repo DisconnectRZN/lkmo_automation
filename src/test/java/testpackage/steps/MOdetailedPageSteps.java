@@ -55,4 +55,29 @@ public class MOdetailedPageSteps {
     @When("^Проверка доступности кнопки возврата к предпросмотру МО$")
     public void checkBackButton() { page.checkBackButton(); }
 
+    @When("^Проверка доступности заголовка открытого расписания услуги в МО$")
+    public void checkHeadingUsl() { page.checkHeadingUsl(); }
+
+    @When("^Проверка доступности блока выбора месяца в расписании услуги в МО$")
+    public void checkMonthChangeBlockUsl() { page.checkMonthChangeBlockUsl(); }
+
+    @When("^Проверка доступности кнопки выбора предыдущего месяца, у услуги, выбранного МО$")
+    public void checkMonthChangeLeftButtonUsl() { page.checkMonthChangeLeftButtonUsl(); }
+
+    @When("^Проверка отображения выбранного месяца, у услуги, выбранного МО$")
+    public void checkMonthEnterAfterChangeUsl() { page.checkMonthEnterAfterChangeUsl(); }
+
+    @When("^Проверка доступности кнопки выбора следующего месяца, у услуги, выбранного МО$")
+    public void checkMonthChangeRightButtonUsl() { page.checkMonthChangeRightButtonUsl(); }
+
+    @When("^Проверка доступности календаря ранее услуги у выбранного МО$")
+    public void checkScheduleCalendarUsl() { page.checkScheduleCalendarUsl(); }
+
+    @When("^Проверка доступности кнопки открытия поп-апа календаря, усулги, у выбранного МО$")
+    public void checkCalendarButtonUsl() { page.checkCalendarButtonUsl(); }
+
+    @When("^Проверка доступности календаря поп-апа, у усулги, выбранного МО$")
+    public void checkPopApCalendarUsl() { page.checkPopApCalendarUsl(); }
+
+
 }
