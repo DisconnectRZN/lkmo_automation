@@ -39,7 +39,7 @@ public class MainPage extends WebPage {
     @FindBy(xpath = "//*[@data-id='AgglomerationId']") // Поле Агломерация
     WebElementFacade AgglomerationField;
 
-    @FindBy(xpath = "//*[@class='dropdown-menu inner show']//*[contains(text(),'Автотесты')]") // Поле Агломерация - Автотесты
+    @FindBy(xpath = "//*[@class='dropdown-menu inner show']//*[contains(text(),'еще для автотестов')]") // Поле Агломерация - Автотесты
     WebElementFacade Agglomeration;
 
     @FindBy(xpath = "//div[@class='dropdown bootstrap-select form-control']//*[@id='AgglomerationId']//*[contains(text(),'Автотесты')]") // Поле Агломерация - Автотесты
@@ -69,6 +69,10 @@ public class MainPage extends WebPage {
     @FindBy(xpath = "//*[@class='dropdown-menu show']//*[contains(text(),'Украина')]") // Поле Страна - Украина
     WebElementFacade Country;
 
+
+    @FindBy(xpath = "//*[@class='dropdown-item']//*[contains(text(),'Армения')]") // Поле Страна - Армения
+    WebElementFacade CountryArmenia;
+
     @FindBy(xpath = "//div[@class='dropdown bootstrap-select form-control']//*[@id='Country']//*[contains(text(),'Украина')]") // Поле Страна - Украина
     WebElementFacade UkraineCountry;
 
@@ -92,6 +96,13 @@ public class MainPage extends WebPage {
 
     @FindBy(xpath = "//tr[@class='table-row-first']//td[@class='office-name-cell']") // Первая строка таблицы
     WebElementFacade FirstFieldAfterSearch;
+
+
+    @FindBy(xpath = "//tr[@class='table-row-first']//td[@class='office-name-cell']//*[contains(text(),'автотест476-2')]") // Первая строка таблицы
+    WebElementFacade FirstFieldAfterAglomerationSearch;
+
+    @FindBy(xpath = "//tr[@class='table-row-first']//td[@class='office-name-cell']//*[contains(text(),'МО Ереван')]") // Первая строка таблицы
+    WebElementFacade FirstFieldAfterClosedStatus;
 
     @FindBy(xpath = "//input[@id='smartSearchClear']") // Кнопка сбросить фильтр поиска
     WebElementFacade SearchClearButton;
@@ -170,9 +181,10 @@ public class MainPage extends WebPage {
                 .isTrue();
         Agglomeration.click();
         Assertions.assertThat(isElementDisplayed(AutoTestAgglomeration));
-        Assertions.assertThat(isElementDisplayed(FirstFieldAfterSearch))
+        Assertions.assertThat(isElementDisplayed(FirstFieldAfterAglomerationSearch))
                 .as("Искомое МО не найдено")
                 .isTrue();
+        SearchClearButton.waitUntilClickable();
         SearchClearButton.click();
 
     }
@@ -186,7 +198,10 @@ public class MainPage extends WebPage {
                 .isTrue();
         Status.click();
         Assertions.assertThat(isElementDisplayed(CloseStatus));
-        Assertions.assertThat(isElementDisplayed(FirstFieldAfterSearch))
+        CountryField.click();
+        Assertions.assertThat(isElementDisplayed(CountryArmenia));
+        CountryArmenia.click();
+        Assertions.assertThat(isElementDisplayed(FirstFieldAfterClosedStatus))
                 .as("Искомое МО не найдено")
                 .isTrue();
         SearchClearButton.click();
